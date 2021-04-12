@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -11,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Obrazovanje.findAll", query="SELECT o FROM Obrazovanje o")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Obrazovanje implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +32,8 @@ public class Obrazovanje implements Serializable {
 	private String stepenStrucneSpreme;
 
 	//bi-directional many-to-one association to Radnik
-	@OneToMany(mappedBy="obrazovanjeBean")
+	@JsonIgnore
+	@OneToMany(mappedBy="obrazovanje")
 	private List<Radnik> radniks;
 
 	public Obrazovanje() {
@@ -75,14 +81,14 @@ public class Obrazovanje implements Serializable {
 
 	public Radnik addRadnik(Radnik radnik) {
 		getRadniks().add(radnik);
-		radnik.setObrazovanjeBean(this);
+		radnik.setObrazovanje(this);
 
 		return radnik;
 	}
 
 	public Radnik removeRadnik(Radnik radnik) {
 		getRadniks().remove(radnik);
-		radnik.setObrazovanjeBean(null);
+		radnik.setObrazovanje(null);
 
 		return radnik;
 	}

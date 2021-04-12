@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -11,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Preduzece.findAll", query="SELECT p FROM Preduzece p")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Preduzece implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +33,8 @@ public class Preduzece implements Serializable {
 	private String sediste;
 
 	//bi-directional many-to-one association to Sektor
-	@OneToMany(mappedBy="preduzeceBean")
+	@JsonIgnore
+	@OneToMany(mappedBy="preduzece")
 	private List<Sektor> sektors;
 
 	public Preduzece() {
@@ -84,14 +90,14 @@ public class Preduzece implements Serializable {
 
 	public Sektor addSektor(Sektor sektor) {
 		getSektors().add(sektor);
-		sektor.setPreduzeceBean(this);
+		sektor.setPreduzece(this);
 
 		return sektor;
 	}
 
 	public Sektor removeSektor(Sektor sektor) {
 		getSektors().remove(sektor);
-		sektor.setPreduzeceBean(null);
+		sektor.setPreduzece(null);
 
 		return sektor;
 	}

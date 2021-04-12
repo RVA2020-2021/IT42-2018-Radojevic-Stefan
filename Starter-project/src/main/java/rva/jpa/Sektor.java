@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -11,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Sektor.findAll", query="SELECT s FROM Sektor s")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Sektor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,13 +29,14 @@ public class Sektor implements Serializable {
 	private String oznaka;
 
 	//bi-directional many-to-one association to Radnik
-	@OneToMany(mappedBy="sektorBean")
+	@JsonIgnore
+	@OneToMany(mappedBy="sektor")
 	private List<Radnik> radniks;
 
 	//bi-directional many-to-one association to Preduzece
 	@ManyToOne
 	@JoinColumn(name="preduzece")
-	private Preduzece preduzeceBean;
+	private Preduzece preduzece;
 
 	public Sektor() {
 	}
@@ -69,24 +75,24 @@ public class Sektor implements Serializable {
 
 	public Radnik addRadnik(Radnik radnik) {
 		getRadniks().add(radnik);
-		radnik.setSektorBean(this);
+		radnik.setSektor(this);
 
 		return radnik;
 	}
 
 	public Radnik removeRadnik(Radnik radnik) {
 		getRadniks().remove(radnik);
-		radnik.setSektorBean(null);
+		radnik.setSektor(null);
 
 		return radnik;
 	}
 
-	public Preduzece getPreduzeceBean() {
-		return this.preduzeceBean;
+	public Preduzece getPreduzece() {
+		return this.preduzece;
 	}
 
-	public void setPreduzeceBean(Preduzece preduzeceBean) {
-		this.preduzeceBean = preduzeceBean;
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
 	}
 
 }

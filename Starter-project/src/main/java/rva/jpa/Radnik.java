@@ -3,6 +3,8 @@ package rva.jpa;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * The persistent class for the radnik database table.
@@ -10,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name="Radnik.findAll", query="SELECT r FROM Radnik r")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Radnik implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,12 +31,12 @@ public class Radnik implements Serializable {
 	//bi-directional many-to-one association to Obrazovanje
 	@ManyToOne
 	@JoinColumn(name="obrazovanje")
-	private Obrazovanje obrazovanjeBean;
+	private Obrazovanje obrazovanje;
 
 	//bi-directional many-to-one association to Sektor
 	@ManyToOne
 	@JoinColumn(name="sektor")
-	private Sektor sektorBean;
+	private Sektor sektor;
 
 	public Radnik() {
 	}
@@ -70,20 +73,20 @@ public class Radnik implements Serializable {
 		this.prezime = prezime;
 	}
 
-	public Obrazovanje getObrazovanjeBean() {
-		return this.obrazovanjeBean;
+	public Obrazovanje getObrazovanje() {
+		return this.obrazovanje;
 	}
 
-	public void setObrazovanjeBean(Obrazovanje obrazovanjeBean) {
-		this.obrazovanjeBean = obrazovanjeBean;
+	public void setObrazovanje(Obrazovanje obrazovanje) {
+		this.obrazovanje = obrazovanje;
 	}
 
-	public Sektor getSektorBean() {
-		return this.sektorBean;
+	public Sektor getSektor() {
+		return this.sektor;
 	}
 
-	public void setSektorBean(Sektor sektorBean) {
-		this.sektorBean = sektorBean;
+	public void setSektor(Sektor sektor) {
+		this.sektor = sektor;
 	}
 
 }
