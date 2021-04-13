@@ -1,16 +1,17 @@
--- Test Data
-
-INSERT INTO "obrazovanje"("id", "naziv", "stepen_strucne_spreme", "opis")
-VALUES (-100, 'FTN', 'V', 'Test');
+-- Data for Preduzece
 
 INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (-100, 'Faculty of Technical Sciences', 45645, 'Trg Dositeja Obradovica 4, Novi Sad', 'An educational facility');
-
-INSERT INTO "sektor"("id", "naziv", "oznaka", "preduzece")
-VALUES (-100, 'Test name', 'TN', 1);
-
-INSERT INTO "radnik"("id", "ime", "prezime", "broj_lk", "obrazovanje", "sektor")
-VALUES (-100, 'Milan', 'Milanovic', 85225845, 2, 2);
+VALUES (1, 'Faculty of Philosophics', 12345, 'Trg Dositeja Obradovica 9, Novi Sad', 'An educational facility');
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (2, 'Brush IT', 54321, 'Bulevar Oslobodjenja 55, Novi Sad', 'A software outsourcing company that also sells brooms');
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (3, 'Belgrade Turistic Agency', 56789, 'Bulevar Oslobodjenja 33, Beograd', 'An agency that will take you anywhere in Belgrade');
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (4, 'Positive Technologies', 98765, 'Bulevar Oslobodjenja 33, Beograd', 'A software company that offers outsourcing to other companies');
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (5, 'Mikromarket D.O.O', 22334, 'Dobanovacki put, Surcin', 'A store that sells all types of basic necessities');
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (6, 'Smile', 44556, 'Dobanovacki put, Surcin', 'A medical clinic');
 
 -- Data for Obrazovanje
 
@@ -32,21 +33,6 @@ INSERT INTO "obrazovanje"("id", "naziv", "stepen_strucne_spreme", "opis")
 VALUES (8, 'PMF', 'VII-1', 'Diplomirani turizmolog');
 INSERT INTO "obrazovanje"("id", "naziv", "stepen_strucne_spreme", "opis")
 VALUES (9, 'FTN', 'VII-1', 'Diplomirani inzenjer saobracaja');
-
--- Data for Preduzece
-
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (1, 'Faculty of Philosophics', 12345, 'Trg Dositeja Obradovica 9, Novi Sad', 'An educational facility');
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (2, 'Brush IT', 54321, 'Bulevar Oslobodjenja 55, Novi Sad', 'A software outsourcing company that also sells brooms');
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (3, 'Belgrade Turistic Agency', 56789, 'Bulevar Oslobodjenja 33, Beograd', 'An agency that will take you anywhere in Belgrade');
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (4, 'Positive Technologies', 98765, 'Bulevar Oslobodjenja 33, Beograd', 'A software company that offers outsourcing to other companies');
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (5, 'Mikromarket D.O.O', 22334, 'Dobanovacki put, Surcin', 'A store that sells all types of basic necessities');
-INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (6, 'Smile', 44556, 'Dobanovacki put, Surcin', 'A medical clinic');
 
 -- Data for Sektor
 
@@ -81,3 +67,17 @@ INSERT INTO "radnik"("id", "ime", "prezime", "broj_lk", "obrazovanje", "sektor")
 VALUES (8, 'Dejan', 'Mirkovic', 32659878, 8, 3);
 INSERT INTO "radnik"("id", "ime", "prezime", "broj_lk", "obrazovanje", "sektor")
 VALUES (9, 'Milica', 'Markovic', 78451232, 9, 4);
+
+-- Test Data
+
+INSERT INTO "obrazovanje"("id", "naziv", "stepen_strucne_spreme", "opis")
+VALUES (-100, 'FTN', 'V', 'Test');
+
+INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
+VALUES (-100, 'Faculty of Technical Sciences', 45645, 'Trg Dositeja Obradovica 4, Novi Sad', 'An educational facility');
+
+INSERT INTO "sektor"("id", "naziv", "oznaka", "preduzece")
+VALUES (-100, 'Test name', 'TN', 1);
+
+INSERT INTO "radnik"("id", "ime", "prezime", "broj_lk", "obrazovanje", "sektor")
+VALUES (-100, 'Milan', 'Milanovic', 85225845, 2, 2);
