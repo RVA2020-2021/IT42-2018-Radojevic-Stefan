@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rva.jpa.Sektor;
 import rva.repository.SektorRepository;
 
 @RestController
+@Api(tags = {"Sektor CRUD operacije"})
+
 public class SektorRestController {
 
 	@Autowired
@@ -29,21 +33,25 @@ public class SektorRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("sektor")
+	@ApiOperation(value = "Vraæa kolekciju svih sektora iz baze podataka")
 	public Collection<Sektor> getSektore() {
 		return sektorRepository.findAll();
 	}
 	
 	@GetMapping("sektor/{id}")
+	@ApiOperation(value = "Vraæa sektor iz baze podataka èija se vrednost ID-a poklapa sa prosleðenom vrednošæu ID-a")
 	public Sektor getSektor(@PathVariable("id") Integer id) {
 		return sektorRepository.getOne(id);
 	}
 	
 	@GetMapping("sektorNaziv/{naziv}")
+	@ApiOperation(value = "Vraæa kolekciju sektora iz baze podataka koji u nazivu sadrže prosleðenu vrednost stringa")
 	public Collection<Sektor> getSektorByNaziv(@PathVariable("naziv") String naziv) {
 		return sektorRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("sektor")
+	@ApiOperation(value = "Upisuje sektor u bazu podataka")
 	public ResponseEntity<Sektor> insertSektor(@RequestBody Sektor sektor) {
 		if (!sektorRepository.existsById(sektor.getId())) {
 			sektorRepository.save(sektor);
@@ -53,6 +61,7 @@ public class SektorRestController {
 	}
 	
 	@PutMapping("sektor")
+	@ApiOperation(value = "Modifikuje podatke o sektoru u bazi podataka")
 	public ResponseEntity<Sektor> updateSektor(@RequestBody Sektor sektor) {
 		if (!sektorRepository.existsById(sektor.getId())) {
 			return new ResponseEntity<Sektor>(HttpStatus.NO_CONTENT);
@@ -63,6 +72,7 @@ public class SektorRestController {
 	
 	//@Transactional
 	@DeleteMapping("sektor/{id}")
+	@ApiOperation(value = "Briše sektor iz baze podataka")
 	public ResponseEntity<Sektor> deleteSektor(@PathVariable Integer id) {
 		if (!sektorRepository.existsById(id)) {
 			return new ResponseEntity<Sektor>(HttpStatus.NO_CONTENT);
