@@ -53,7 +53,7 @@ public class ObrazovanjeRestController {
 	@PutMapping("obrazovanje")
 	public ResponseEntity<Obrazovanje> updateObrazovanje(@RequestBody Obrazovanje obrazovanje) {
 		if (!obrazovanjeRepository.existsById(obrazovanje.getId())) {
-			return new ResponseEntity<Obrazovanje>(HttpStatus.CONFLICT);
+			return new ResponseEntity<Obrazovanje>(HttpStatus.NO_CONTENT);
 		}
 		obrazovanjeRepository.save(obrazovanje);
 		return new ResponseEntity<Obrazovanje>(HttpStatus.OK);
