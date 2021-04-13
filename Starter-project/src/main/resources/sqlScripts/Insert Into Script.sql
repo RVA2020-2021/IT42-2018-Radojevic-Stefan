@@ -74,7 +74,7 @@ INSERT INTO "obrazovanje"("id", "naziv", "stepen_strucne_spreme", "opis")
 VALUES (-100, 'FTN', 'V', 'Test');
 
 INSERT INTO "preduzece"("id", "naziv", "pib", "sediste", "opis")
-VALUES (-100, 'Faculty of Technical Sciences', 45645, 'Trg Dositeja Obradovica 4, Novi Sad', 'An educational facility');
+VALUES (-100, 'Faculty of Technical Sciences', 45645, 'Trg Dositeja Obradovica 4','test');
 
 INSERT INTO "sektor"("id", "naziv", "oznaka", "preduzece")
 VALUES (-100, 'Test name', 'TN', 1);

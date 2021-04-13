@@ -50,7 +50,7 @@ public class PreduzeceRestController {
 	}
 	
 	@PutMapping("preduzece")
-	public ResponseEntity<Preduzece> updateObrazovanje(@RequestBody Preduzece preduzece) {
+	public ResponseEntity<Preduzece> updatePreduzeca(@RequestBody Preduzece preduzece) {
 		if (!preduzeceRepository.existsById(preduzece.getId())) {
 			return new ResponseEntity<Preduzece>(HttpStatus.NO_CONTENT);
 		}
@@ -63,6 +63,12 @@ public class PreduzeceRestController {
 		if (!preduzeceRepository.existsById(id)) {
 			return new ResponseEntity<Preduzece>(HttpStatus.NO_CONTENT);
 		}
+		
+		jdbcTemplate.execute("delete from radnik sp "
+                + "where sektor in (select id from sektor where preduzece="+id+")");
+		jdbcTemplate.execute("DELETE FROM sektor where preduzece=" + id);
+		
+		
 		preduzeceRepository.deleteById(id);
 		// Used only in purpose of testing
 		if (id == -100) {

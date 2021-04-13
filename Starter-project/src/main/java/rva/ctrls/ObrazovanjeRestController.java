@@ -64,7 +64,9 @@ public class ObrazovanjeRestController {
 		if (!obrazovanjeRepository.existsById(id)) {
 			return new ResponseEntity<Obrazovanje>(HttpStatus.NO_CONTENT);
 		}
+		jdbcTemplate.execute("Delete from radnik where obrazovanje=" + id);
 		obrazovanjeRepository.deleteById(id);
+		
 		// Used only in purpose of testing
 		if (id == -100) {
 			jdbcTemplate.execute(" INSERT INTO \"obrazovanje\" (\"id\", \"naziv\", \"stepen_strucne_spreme\", \"opis\") "

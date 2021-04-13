@@ -44,7 +44,7 @@ public class SektorRestController {
 	}
 	
 	@PostMapping("sektor")
-	public ResponseEntity<Sektor> insertPreduzece(@RequestBody Sektor sektor) {
+	public ResponseEntity<Sektor> insertSektor(@RequestBody Sektor sektor) {
 		if (!sektorRepository.existsById(sektor.getId())) {
 			sektorRepository.save(sektor);
 			return new ResponseEntity<Sektor>(HttpStatus.OK);
@@ -53,7 +53,7 @@ public class SektorRestController {
 	}
 	
 	@PutMapping("sektor")
-	public ResponseEntity<Sektor> updateObrazovanje(@RequestBody Sektor sektor) {
+	public ResponseEntity<Sektor> updateSektor(@RequestBody Sektor sektor) {
 		if (!sektorRepository.existsById(sektor.getId())) {
 			return new ResponseEntity<Sektor>(HttpStatus.NO_CONTENT);
 		}
@@ -63,7 +63,7 @@ public class SektorRestController {
 	
 	//@Transactional
 	@DeleteMapping("sektor/{id}")
-	public ResponseEntity<Sektor> deletePreduzece(@PathVariable Integer id) {
+	public ResponseEntity<Sektor> deleteSektor(@PathVariable Integer id) {
 		if (!sektorRepository.existsById(id)) {
 			return new ResponseEntity<Sektor>(HttpStatus.NO_CONTENT);
 		}
