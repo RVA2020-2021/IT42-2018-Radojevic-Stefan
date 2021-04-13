@@ -23,7 +23,6 @@ import rva.repository.SektorRepository;
 
 @RestController
 @Api(tags = {"Sektor CRUD operacije"})
-
 public class SektorRestController {
 
 	@Autowired
