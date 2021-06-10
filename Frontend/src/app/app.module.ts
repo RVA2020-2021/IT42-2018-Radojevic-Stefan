@@ -16,6 +16,22 @@ import { ObrazovanjeComponent } from './components/obrazovanje/obrazovanje.compo
 import { PreduzeceComponent } from './components/preduzece/preduzece.component';
 import { SektorComponent } from './components/sektor/sektor.component';
 import { RadnikComponent } from './components/radnik/radnik.component';
+import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { ObrazovanjeDialogComponent } from './components/dialogs/obrazovanje-dialog/obrazovanje-dialog.component';
+import { PreduzeceDialogComponent } from './components/dialogs/preduzece-dialog/preduzece-dialog.component';
+import { SektorDialogComponent } from './components/dialogs/sektor-dialog/sektor-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { RadnikDialogComponent } from './components/dialogs/radnik-dialog/radnik-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +42,11 @@ import { RadnikComponent } from './components/radnik/radnik.component';
     ObrazovanjeComponent,
     PreduzeceComponent,
     SektorComponent,
-    RadnikComponent
+    RadnikComponent,
+    ObrazovanjeDialogComponent,
+    PreduzeceDialogComponent,
+    SektorDialogComponent,
+    RadnikDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +59,17 @@ import { RadnikComponent } from './components/radnik/radnik.component';
     MatListModule,
     MatGridListModule,
     MatExpansionModule,
+    MatTableModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule, 
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
